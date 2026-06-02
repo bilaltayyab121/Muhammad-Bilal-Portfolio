@@ -102,29 +102,58 @@ export default function Projects({ maxItems }) {
                 className="ring-grad group relative glass card-hover overflow-hidden"
               >
                 {/* Cover */}
-                <div
-                  className={`relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br ${p.cover}`}
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.25),transparent_60%)]" />
-                  <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay" />
-                  <div className="absolute inset-0 grid place-items-center">
-                    <span className="font-mono text-5xl font-bold text-white/85 drop-shadow-lg transition-transform duration-500 group-hover:scale-110">
-                      {p.title.charAt(0)}
+                {p.image ? (
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-800">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/30" />
+                    <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay" />
+                    <div className="absolute inset-0 grid place-items-center">
+                      <span className="font-mono text-5xl font-bold text-white/85 drop-shadow-lg transition-transform duration-500 group-hover:scale-110">
+                        {p.title.charAt(0)}
+                      </span>
+                    </div>
+                    {p.featured && (
+                      <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
+                        <Star
+                          size={10}
+                          className="fill-amber-300 text-amber-300"
+                        />
+                        Featured
+                      </span>
+                    )}
+                    <span className="absolute right-3 top-3 chip bg-black/40 backdrop-blur">
+                      {p.category}
                     </span>
                   </div>
-                  {p.featured && (
-                    <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
-                      <Star
-                        size={10}
-                        className="fill-amber-300 text-amber-300"
-                      />
-                      Featured
+                ) : (
+                  <div
+                    className={`relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br ${p.cover}`}
+                  >
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.25),transparent_60%)]" />
+                    <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay" />
+                    <div className="absolute inset-0 grid place-items-center">
+                      <span className="font-mono text-5xl font-bold text-white/85 drop-shadow-lg transition-transform duration-500 group-hover:scale-110">
+                        {p.title.charAt(0)}
+                      </span>
+                    </div>
+                    {p.featured && (
+                      <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
+                        <Star
+                          size={10}
+                          className="fill-amber-300 text-amber-300"
+                        />
+                        Featured
+                      </span>
+                    )}
+                    <span className="absolute right-3 top-3 chip bg-black/40 backdrop-blur">
+                      {p.category}
                     </span>
-                  )}
-                  <span className="absolute right-3 top-3 chip bg-black/40 backdrop-blur">
-                    {p.category}
-                  </span>
-                </div>
+                  </div>
+                )}
 
                 {/* Body */}
                 <div className="p-5">
