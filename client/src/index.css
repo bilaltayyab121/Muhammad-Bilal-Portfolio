@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  background-color: #070712;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a16;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4338ca, #06b6d4);
+  border-radius: 999px;
+  border: 2px solid #0a0a16;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6366f1, #22d3ee);
+}
+
+/* Selection */
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-2xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60;
+  }
+
+  .btn-primary {
+    @apply btn text-white shadow-glow;
+    background-image: linear-gradient(120deg, #4f46e5 0%, #6366f1 40%, #06b6d4 100%);
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+  .btn-primary:hover {
+    @apply -translate-y-0.5;
+    filter: brightness(1.08);
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/[0.04] text-slate-200 hover:border-white/30 hover:bg-white/[0.08];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight text-white sm:text-4xl;
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand-300;
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #a5b4fc 0%, #ffffff 35%, #67e8f9 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-glow;
+  }
+
+  .ring-grad::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, rgba(99, 102, 241, 0.6), rgba(34, 211, 238, 0.6));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .ring-grad:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Subtle grid background overlay */
+.bg-stage {
+  background-color: #070712;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(99, 102, 241, 0.22), transparent 60%),
+    radial-gradient(900px 500px at 100% 10%, rgba(34, 211, 238, 0.16), transparent 60%),
+    radial-gradient(800px 600px at 50% 120%, rgba(139, 92, 246, 0.18), transparent 60%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
