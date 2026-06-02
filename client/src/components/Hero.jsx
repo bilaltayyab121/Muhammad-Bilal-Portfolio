@@ -9,16 +9,25 @@ import {
   MapPin,
   Sparkles,
 } from 'lucide-react';
-import { profile, socials, stats } from '../data/portfolio.js';
+import { SiFiverr, SiUpwork, SiWhatsapp } from "react-icons/si";
+import { profile, socials, stats } from "../data/portfolio.js";
 
-const iconMap = { Github, Linkedin, Mail, ExternalLink };
+const iconMap = {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Fiverr: SiFiverr,
+  Upwork: SiUpwork,
+  WhatsApp: SiWhatsapp,
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.05 * i, duration: 0.6, ease: 'easeOut' },
+    transition: { delay: 0.05 * i, duration: 0.6, ease: "easeOut" },
   }),
 };
 

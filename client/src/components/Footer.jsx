@@ -1,13 +1,21 @@
 import { ExternalLink, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
-import { profile, socials } from '../data/portfolio.js';
+import { SiFiverr, SiUpwork, SiWhatsapp } from "react-icons/si";
+import { profile, socials } from "../data/portfolio.js";
 
-const iconMap = { Github, Linkedin, Mail, ExternalLink };
+const iconMap = {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Fiverr: SiFiverr,
+  Upwork: SiUpwork,
+  WhatsApp: SiWhatsapp,
+};
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  const toTop = () =>
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="relative mt-10 border-t border-white/5 py-10">
@@ -15,10 +23,8 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="text-center sm:text-left">
             <p className="text-sm text-slate-300">
-              <span className="font-semibold text-white">
-                {profile.name}
-              </span>{' '}
-              · {profile.role}
+              <span className="font-semibold text-white">{profile.name}</span> ·{" "}
+              {profile.role}
             </p>
             <p className="mt-1 text-xs text-slate-500">
               © {year} All rights reserved. Built with React, Tailwind & ☕.

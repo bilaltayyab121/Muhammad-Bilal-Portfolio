@@ -3,28 +3,33 @@ import { Code2, Rocket, Users, Sparkles } from 'lucide-react';
 import SectionHeading from './SectionHeading.jsx';
 import { profile, stats } from '../data/portfolio.js';
 
+
+
 const highlights = [
   {
     icon: Code2,
-    title: 'Clean Architecture',
-    description: 'Scalable, testable code with thoughtful separation of concerns.',
+    title: "Clean Architecture",
+    description:
+      "Scalable, testable code with thoughtful separation of concerns.",
   },
   {
     icon: Rocket,
-    title: 'Performance First',
-    description: 'Lighthouse-conscious, optimized bundles and snappy UX.',
+    title: "Performance First",
+    description: "Lighthouse-conscious, optimized bundles and snappy UX.",
   },
   {
     icon: Users,
-    title: 'Team Player',
-    description: 'Mentor mindset, async-friendly and review-driven culture.',
+    title: "Team Player",
+    description: "Mentor mindset, async-friendly and review-driven culture.",
   },
   {
     icon: Sparkles,
-    title: 'Pixel Polish',
-    description: 'A genuine love for design systems and craft details.',
+    title: "Pixel Polish",
+    description: "A genuine love for design systems and craft details.",
   },
 ];
+
+const experienceYears = Math.max(1, new Date().getFullYear() - 2021);
 
 export default function About() {
   return (
@@ -32,7 +37,7 @@ export default function About() {
       <div className="container-page">
         <SectionHeading
           eyebrow="About Me"
-          title="Passionate developer with 2+ years of experience"
+          title={`Passionate developer with ${experienceYears}+ years of experience`}
           description="Building scalable applications and crafting exceptional digital experiences."
         />
 
@@ -41,7 +46,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
             className="glass relative overflow-hidden p-7 sm:p-8 lg:col-span-7"
           >
@@ -77,7 +82,7 @@ export default function About() {
                   key={h.title}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
+                  viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
                   className="ring-grad relative glass card-hover p-5"
                 >

@@ -10,11 +10,19 @@ import {
   Loader2,
   Sparkles,
 } from 'lucide-react';
-import SectionHeading from './SectionHeading.jsx';
-import api from '../lib/api.js';
-import { profile, socials, serviceOptions } from '../data/portfolio.js';
+import { SiFiverr, SiUpwork, SiWhatsapp } from "react-icons/si";
+import SectionHeading from "./SectionHeading.jsx";
+import api from "../lib/api.js";
+import { profile, socials, serviceOptions } from "../data/portfolio.js";
 
-const iconMap = { Github, Linkedin, Mail };
+const iconMap = {
+  Github,
+  Linkedin,
+  Mail,
+  Fiverr: SiFiverr,
+  Upwork: SiUpwork,
+  WhatsApp: SiWhatsapp,
+};
 
 const initialForm = {
   name: '',

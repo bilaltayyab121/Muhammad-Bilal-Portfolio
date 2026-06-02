@@ -6,80 +6,87 @@
 const experienceYears = Math.max(1, new Date().getFullYear() - 2021);
 
 export const profile = {
-  name: 'Muhammad Bilal',
-  firstName: 'Muhammad',
-  lastName: 'Bilal',
-  role: 'Full Stack Developer',
-  tagline: 'Software Engineer · MERN · Cloud',
-  location: 'Lahore, Pakistan',
-  availability: 'Available for new projects',
-  email: 'bilaltayyab121@gmail.com',
-  phone: '+92 322 0456775',
-  resumeUrl: '/Muhammad-Bilal-CV.pdf',
+  name: "Muhammad Bilal",
+  firstName: "Muhammad",
+  lastName: "Bilal",
+  role: "Full Stack Developer",
+  tagline: "Software Engineer · MERN · Cloud",
+  location: "Lahore, Pakistan",
+  availability: "Available for new projects",
+  email: "bilaltayyab121@gmail.com",
+  phone: "+92 322 0456775",
+  resumeUrl: "/Muhammad_Bilal_Resume.pdf",
   shortIntro:
     "I craft elegant digital experiences with modern web technologies. I'm a passionate full-stack developer with experience building scalable applications across the MERN stack and the cloud.",
   longIntro: [
     "I'm a passionate full-stack developer with over 2 years of experience creating digital solutions that make a difference. My journey started with a curiosity about how websites work, and it has evolved into a deep expertise in modern web technologies.",
-    'I specialize in building scalable applications using React, Node.js and cloud technologies. Whether it is architecting microservices, optimizing database performance, or crafting pixel-perfect user interfaces, I bring both technical expertise and creative problem-solving to every project.',
+    "I specialize in building scalable applications using React, Node.js and cloud technologies. Whether it is architecting microservices, optimizing database performance, or crafting pixel-perfect user interfaces, I bring both technical expertise and creative problem-solving to every project.",
     "When I'm not coding, you'll find me contributing to open-source projects, mentoring junior developers, or exploring the latest tech trends. I believe in continuous learning and sharing knowledge with the community.",
   ],
   quote: {
-    text: 'Clean code always looks like it was written by someone who cares.',
-    author: 'Robert C. Martin',
+    text: "Clean code always looks like it was written by someone who cares.",
+    author: "Robert C. Martin",
   },
 };
 
 export const stats = [
-  { label: 'Projects', value: '50+' },
-  { label: 'Years Experience', value: `${experienceYears}+` },
-  { label: 'Technologies', value: '15+' },
-  { label: 'Happy Clients', value: '20+' },
+  { label: "Projects", value: "50+" },
+  { label: "Years Experience", value: `${experienceYears}+` },
+  { label: "Technologies", value: "15+" },
+  { label: "Happy Clients", value: "20+" },
 ];
 
 export const socials = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/bilaltayyab121',
-    icon: 'Github',
+    name: "GitHub",
+    href: "https://github.com/bilaltayyab121",
+    icon: "Github",
   },
   {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/bilaltayyab121/',
-    icon: 'Linkedin',
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/bilaltayyab121/",
+    icon: "Linkedin",
   },
   {
-    name: 'Fiverr',
-    href: 'https://www.fiverr.com/bilaltayyab121',
-    icon: 'Fiverr',
+    name: "Fiverr",
+    href: "https://www.fiverr.com/bilaltayyab121",
+    icon: "Fiverr",
   },
   {
-    name: 'Upwork',
-    href: 'https://www.upwork.com/freelancers/~bilaltayyab121',
-    icon: 'Upwork',
+    name: "Upwork",
+    href: "https://www.upwork.com/freelancers/~bilaltayyab121",
+    icon: "Upwork",
   },
   {
-    name: 'Email',
-    href: 'mailto:bilaltayyab121@gmail.com',
-    icon: 'Mail',
+    name: "WhatsApp",
+    href: "https://wa.me/923220456775",
+    icon: "WhatsApp",
+  },
+  {
+    name: "Email",
+    href: "mailto:bilaltayyab121@gmail.com",
+    icon: "Mail",
   },
 ];
 
 export const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Services', href: '/services' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const serviceOptions = [
-  'Web Development',
-  'Mobile App Development',
-  'UI / UX Design',
-  'E-commerce Solutions',
-  'API & Backend Services',
+  "Web Development",
+  "Mobile App Development",
+  "UI / UX Design",
+  "E-commerce Solutions",
+  "API & Backend Services",
+  "WordPress Development",
+  "Bubble Development",
 ];
 
 export const services = [

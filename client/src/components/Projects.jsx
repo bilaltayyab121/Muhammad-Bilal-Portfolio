@@ -63,15 +63,19 @@ export default function Projects({ maxItems }) {
                   onClick={() => setFilter(f)}
                   className={`relative rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
                     active
-                      ? 'border-transparent text-white'
-                      : 'border-white/10 bg-white/[0.04] text-slate-300 hover:border-white/30 hover:text-white'
+                      ? "border-transparent text-white"
+                      : "border-white/10 bg-white/[0.04] text-slate-300 hover:border-white/30 hover:text-white"
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="filter-pill"
                       className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-brand-500 to-cyan-500 shadow-glow"
-                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 32,
+                      }}
                     />
                   )}
                   {f}
@@ -110,7 +114,10 @@ export default function Projects({ maxItems }) {
                   </div>
                   {p.featured && (
                     <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
-                      <Star size={10} className="fill-amber-300 text-amber-300" />
+                      <Star
+                        size={10}
+                        className="fill-amber-300 text-amber-300"
+                      />
                       Featured
                     </span>
                   )}
@@ -121,7 +128,9 @@ export default function Projects({ maxItems }) {
 
                 {/* Body */}
                 <div className="p-5">
-                  <h3 className="text-lg font-semibold text-white">{p.title}</h3>
+                  <h3 className="text-lg font-semibold text-white">
+                    {p.title}
+                  </h3>
                   <p className="mt-2 line-clamp-3 text-sm text-slate-400">
                     {p.description}
                   </p>
@@ -135,7 +144,7 @@ export default function Projects({ maxItems }) {
                   </ul>
 
                   <div className="mt-5 flex items-center gap-3">
-                    {p.liveUrl && p.liveUrl !== '#' ? (
+                    {p.liveUrl && p.liveUrl !== "#" ? (
                       <a
                         href={p.liveUrl}
                         target="_blank"
@@ -149,7 +158,7 @@ export default function Projects({ maxItems }) {
                         Live <ExternalLink size={14} />
                       </span>
                     )}
-                    {p.repoUrl && p.repoUrl !== '#' ? (
+                    {p.repoUrl && p.repoUrl !== "#" ? (
                       <a
                         href={p.repoUrl}
                         target="_blank"
@@ -176,10 +185,10 @@ export default function Projects({ maxItems }) {
               Showing {maxItems} of {visible.length} projects.
             </p>
             <Link
-              to="/services"
+              to="/projects"
               className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10"
             >
-              See all projects and services
+              See all projects
             </Link>
           </div>
         )}

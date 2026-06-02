@@ -19,8 +19,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/services') {
-      setActive('/services');
+    if (location.pathname === "/projects") {
+      setActive("/projects");
       return;
     }
 
