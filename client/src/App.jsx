@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import Home from './pages/Home.jsx';
 import ProjectsPage from "./pages/Projects.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           },
         }}
       />
+      <Analytics />
     </>
   );
 }
