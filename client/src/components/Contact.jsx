@@ -65,7 +65,10 @@ export default function Contact() {
     setLoading(true);
     const t = toast.loading('Sending your message...');
     try {
-      const { data } = await api.post('/contact', form);
+      const { data } = await api.post(
+        import.meta.env.VITE_API_URL + "contact",
+        form,
+      );
       toast.success(data?.message || 'Email sent successfully! I will reply soon.', {
         id: t,
       });
