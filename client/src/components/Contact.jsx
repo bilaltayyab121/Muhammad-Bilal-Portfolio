@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import toast from 'react-hot-toast';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 import {
   Mail,
   MapPin,
@@ -9,7 +9,7 @@ import {
   Linkedin,
   Loader2,
   Sparkles,
-} from 'lucide-react';
+} from "lucide-react";
 import { SiFiverr, SiUpwork, SiWhatsapp } from "react-icons/si";
 import SectionHeading from "./SectionHeading.jsx";
 import api from "../lib/api.js";
@@ -25,35 +25,42 @@ const iconMap = {
 };
 
 const initialForm = {
-  name: '',
-  email: '',
-  subject: '',
-  service: '',
-  message: '',
+  name: "",
+  email: "",
+  subject: "",
+  service: "",
+  message: "",
 };
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [visitorData, setVisitorData] = useState({
+    browserInfo: {
+      screenResolution: `${window.screen.width}x${window.screen.height}`,
+      language: navigator.language,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    },
+  });
 
   const update = (e) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
-    if (errors[name]) setErrors((er) => ({ ...er, [name]: '' }));
+    if (errors[name]) setErrors((er) => ({ ...er, [name]: "" }));
   };
 
   const validate = () => {
     const next = {};
-    if (!form.name.trim()) next.name = 'Please enter your name';
-    if (!form.email.trim()) next.email = 'Please enter your email';
+    if (!form.name.trim()) next.name = "Please enter your name";
+    if (!form.email.trim()) next.email = "Please enter your email";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      next.email = 'Enter a valid email address';
-    if (!form.subject.trim()) next.subject = 'Please add a subject';
-    if (!form.service.trim()) next.service = 'Please select a service';
-    if (!form.message.trim()) next.message = 'Please write a message';
+      next.email = "Enter a valid email address";
+    if (!form.subject.trim()) next.subject = "Please add a subject";
+    if (!form.service.trim()) next.service = "Please select a service";
+    if (!form.message.trim()) next.message = "Please write a message";
     else if (form.message.trim().length < 10)
-      next.message = 'Message should be at least 10 characters';
+      next.message = "Message should be at least 10 characters";
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -63,21 +70,24 @@ export default function Contact() {
     if (!validate()) return;
 
     setLoading(true);
-    const t = toast.loading('Sending your message...');
+    const t = toast.loading("Sending your message...");
     try {
       const { data } = await api.post(
         import.meta.env.VITE_API_URL + "contact",
-        form,
+        { ...form, ...visitorData },
       );
-      toast.success(data?.message || 'Email sent successfully! I will reply soon.', {
-        id: t,
-      });
+      toast.success(
+        data?.message || "Email sent successfully! I will reply soon.",
+        {
+          id: t,
+        },
+      );
       setForm(initialForm);
     } catch (err) {
       const msg =
         err?.response?.data?.message ||
         err?.message ||
-        'Could not send the message. Please try again.';
+        "Could not send the message. Please try again.";
       toast.error(msg, { id: t });
     } finally {
       setLoading(false);
@@ -98,12 +108,14 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
             className="ring-grad relative glass overflow-hidden p-6 sm:p-8 lg:col-span-7"
           >
             <div className="pointer-events-none absolute -top-20 -left-20 h-60 w-60 rounded-full bg-brand-500/20 blur-3xl" />
-            <h3 className="text-lg font-semibold text-white">Send me a message</h3>
+            <h3 className="text-lg font-semibold text-white">
+              Send me a message
+            </h3>
             <p className="mt-1 text-sm text-slate-400">
               I usually reply within 24 hours.
             </p>
@@ -178,7 +190,7 @@ export default function Contact() {
           <motion.aside
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.05 }}
             className="space-y-4 lg:col-span-5"
           >
@@ -191,7 +203,10 @@ export default function Contact() {
                   <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/[0.04] text-cyan-300">
                     <Mail size={15} />
                   </span>
-                  <a href={`mailto:${profile.email}`} className="hover:text-white">
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="hover:text-white"
+                  >
                     {profile.email}
                   </a>
                 </li>
@@ -258,15 +273,15 @@ function Field({
   onChange,
   error,
   placeholder,
-  type = 'text',
+  type = "text",
   textarea = false,
   select = false,
   options = [],
 }) {
   const base =
-    'block w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:bg-white/[0.05]';
-  const ok = 'border-white/10 focus:border-brand-400/60';
-  const bad = 'border-rose-400/60 focus:border-rose-400';
+    "block w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:bg-white/[0.05]";
+  const ok = "border-white/10 focus:border-brand-400/60";
+  const bad = "border-rose-400/60 focus:border-rose-400";
   return (
     <div>
       <label
@@ -297,7 +312,11 @@ function Field({
             {placeholder}
           </option>
           {options.map((option) => (
-            <option key={option} value={option} className="bg-slate-950 text-slate-100">
+            <option
+              key={option}
+              value={option}
+              className="bg-slate-950 text-slate-100"
+            >
               {option}
             </option>
           ))}

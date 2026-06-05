@@ -19,25 +19,44 @@ function sanitize(value, max = 4000) {
   return value.trim().slice(0, max);
 }
 
-async function sendEmail({ name, email, subject, service, message, ip }) {
+const sendEmail = async ({ name, email, subject, service, message, ip, browserInfo, userAgent }) => {
   if (!emailTransporter) {
-    throw new Error('Email sending is not configured on the server. Set EMAIL_HOST, EMAIL_USER and EMAIL_PASS.');
+    console.error('Email transporter not configured');
+    return;
   }
 
   const mailTo = process.env.EMAIL_TO || 'bilaltayyab121@gmail.com';
+  
+  const browserDetails = browserInfo ? 
+    `Res: ${browserInfo.screenResolution}, Lang: ${browserInfo.language}, TZ: ${browserInfo.timezone}` : 
+    'N/A';
+
   await emailTransporter.sendMail({
     from: `Portfolio Contact <${process.env.EMAIL_USER}>`,
     to: mailTo,
     subject: `[Portfolio Contact] ${subject}`,
-    text: `New message from ${name} <${email}>\nService: ${service || 'N/A'}\nIP: ${ip}\n\n${message}`,
-    html: `<p><strong>Name:</strong> ${name}</p>
-           <p><strong>Email:</strong> ${email}</p>
-           <p><strong>Service:</strong> ${service || 'N/A'}</p>
-           <p><strong>IP:</strong> ${ip}</p>
-           <hr />
-           <p>${message.replace(/\n/g, '<br/>')}</p>`,
+    text: `New message from ${name} <${email}>
+Service: ${service || 'N/A'}
+IP: ${ip}
+Browser: ${browserDetails}
+User Agent: ${userAgent || 'N/A'}
+
+${message}`,
+    html: `<div style="font-family: sans-serif; line-height: 1.5; color: #333;">
+             <h2 style="color: #2563eb;">New Portfolio Message</h2>
+             <p><strong>Name:</strong> ${name}</p>
+             <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Service:</strong> ${service || 'N/A'}</p>
+             <p><strong>IP Address:</strong> ${ip}</p>
+             <p><strong>Browser Info:</strong> ${browserDetails}</p>
+             <p><strong>User Agent:</strong> ${userAgent || 'N/A'}</p>
+             <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+             <div style="background: #f9fafb; padding: 15px; border-radius: 8px;">
+               ${message.replace(/\n/g, '<br/>')}
+             </div>
+           </div>`,
   });
-}
+};
 
 async function createContactMessage(req, res, next) {
   try {
@@ -46,6 +65,9 @@ async function createContactMessage(req, res, next) {
     const subject = sanitize(req.body.subject, 120);
     const service = sanitize(req.body.service, 120);
     const message = sanitize(req.body.message, 4000);
+    const browserInfo = req.body.browserInfo || null;
+    const userAgent = req.get('user-agent') || null;
+    const ip = req.ip;
 
     const errors = {};
     if (!name || name.length < 2) errors.name = 'Name is required';
@@ -70,11 +92,21 @@ async function createContactMessage(req, res, next) {
       subject,
       service,
       message,
-      ip: req.ip,
-      userAgent: req.get('user-agent') || null,
+      ip,
+      userAgent,
+      browserInfo,
     });
 
-    await sendEmail({ name, email, subject, service, message, ip: req.ip });
+    await sendEmail({ 
+      name, 
+      email, 
+      subject, 
+      service, 
+      message, 
+      ip, 
+      browserInfo, 
+      userAgent 
+    });
 
     return res.status(201).json({
       success: true,
