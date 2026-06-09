@@ -15,7 +15,7 @@ export const profile = {
   availability: "Available for new projects",
   email: "bilaltayyab121@gmail.com",
   phone: "+92 322 0456775",
-  resumeUrl: "/Muhammad_Bilal_Resume.pdf",
+  // resumeUrl: "/Muhammad_Bilal_Resume.pdf",
   shortIntro:
     "I craft elegant digital experiences with modern web technologies. I'm a passionate full-stack developer with experience building scalable applications across the MERN stack and the cloud.",
   longIntro: [
