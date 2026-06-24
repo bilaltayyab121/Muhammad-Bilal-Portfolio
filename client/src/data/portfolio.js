@@ -258,7 +258,7 @@ export const projects = [
     tech: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     image: "/Cars365Studio.PNG",
     cover: "from-indigo-500 via-violet-500 to-fuchsia-500",
-    liveUrl: "https://cars365studio.vercel.app/",
+    liveUrl: "https://cars365studio.com/",
     repoUrl: "#",
   },
   {
