@@ -256,7 +256,7 @@ export const projects = [
     description:
       "A modern, scalable e-commerce platform with Stripe integration, real-time inventory management, advanced search and a fully responsive storefront.",
     tech: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
-    image: "/Cars365Studio.PNG",
+    image: "/Muhammad_Bilal_Project_Cars365stdio.PNG",
     cover: "from-indigo-500 via-violet-500 to-fuchsia-500",
     liveUrl: "https://cars365studio.com/",
     repoUrl: "#",
